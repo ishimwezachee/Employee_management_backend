@@ -1,7 +1,7 @@
 const Employee = require("../model/employee");
 
 //============================================ create 
-exports.creat_employee = async (req,res,next)=>{
+exports.create_employee = async (req,res,next)=>{
 let employee = new Employee({
     name:req.body.name,
     nationalId:req.body.nationalId,
@@ -14,3 +14,10 @@ let employee = new Employee({
   employee = await employee.save();
   res.status(201).json(employee)
 }
+
+//=========================================== delete employee
+exports.delete_employee = async (req,res,next)=>{
+    const _id = req.params.employeeId;
+    const employee = await Employee.deleteOne({_id});
+    res.status(200).json(employee)
+  }
