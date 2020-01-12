@@ -33,16 +33,28 @@ exports.modify_employee = async (req,res,next)=>{
     if(req.body.birth_date){
       body.birth_date = req.body.birth_date
     }
-    if(req.body.status){
-        body.status = req.body.status
-      }
     if(req.body.position){
         body.position = req.body.position
     }
+
    const _id = req.params.employeeId;
    const employee = await Employee.findOneAndUpdate({ _id }, body);
    res.status(200).json(employee)
   }
+
+  //=========================================== update employee active/suspend
+
+  exports.modify_employee_suspend_and_activate = async (req,res,next)=>{
+    let body = {}
+    if(req.body.status){
+        body.status = req.body.status
+    }
+   const _id = req.params.employeeId;
+   const employee = await Employee.findOneAndUpdate({ _id }, body);
+   res.status(200).json("status updated successfully")
+  }
+
+
 //=========================================== delete employee
 exports.delete_employee = async (req,res,next)=>{
     const _id = req.params.employeeId;
