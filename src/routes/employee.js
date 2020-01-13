@@ -9,5 +9,5 @@ router.patch("/employees/:employeeId/status",EmployeeController.modify_employee_
 //=======================================================================================================Search 
 router.get("/employees/:name",EmployeeController.get_employee_by_name);
 router.get("/employees/v2/:position",EmployeeController.get_employee_by_position);
-router.get("/employees/v3/:email",EmployeeController.get_employee_by_email)
+router.get("/employees/v3/:email",EmployeeController.get_employee_by_email);
 module.exports = router;

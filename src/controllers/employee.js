@@ -1,4 +1,5 @@
 const Employee = require("../model/employee");
+const sendEmail = require('../middleware/email_send')
 
 //============================================ create 
 exports.create_employee = async (req,res,next)=>{
@@ -12,7 +13,8 @@ let employee = new Employee({
     position:req.body.position
 });
   employee = await employee.save();
-  res.status(201).json(employee)
+  res.status(201).json(employee);
+  sendEmail();
 }
 //=========================================== update employee
 exports.modify_employee = async (req,res,next)=>{
