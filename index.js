@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require('cors');
 const employeeRoutes = require("./src/routes/employee");
+const userRoute = require("./src/routes/user")
 
 //==================================================== middlewares
 app.use(morgan("dev"));
@@ -18,7 +19,8 @@ app.use(cors());
 app.use("/welcome",(req,res)=>{
     res.status(200).send('welcome to the Employee management app')
 });
-app.use("/",employeeRoutes)
+app.use("/",employeeRoutes);
+app.use("/",userRoute);
 //=========================================================== connect mongdb;
 
 mongoose.connect('mongodb://localhost:27017/',
