@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const EmployeeController = require('../controllers/employee');
+const checkAuth = require("../middleware/check_auth");
 
-router.post("/employees",EmployeeController.create_employee);
+router.post("/employees",checkAuth,EmployeeController.create_employee);
 router.delete("/employees/:employeeId",EmployeeController.delete_employee);
 router.patch("/employees/:employeeId",EmployeeController.modify_employee);
 router.patch("/employees/:employeeId/status",EmployeeController.modify_employee_suspend_and_activate);
