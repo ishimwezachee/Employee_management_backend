@@ -18,7 +18,8 @@ const employeeSchema = new Schema({
        type:Date
    },
    status:{
-       type:String
+       type:String,
+       enum:["suspend","active"]
    },
    position: {
        type:String

@@ -6,7 +6,8 @@ require('dotenv').config();
 exports.signup = async (req,res,next)=>{
     try {
         let user =  await User.find({email:req.body.email});
-    if(user){
+        console.log(user)
+    if(user.length>=1){
         return res.status(409).json("you already have an account")
     }else{
         const hashedPassword = await bcrypt.hash(req.body.password,10)
